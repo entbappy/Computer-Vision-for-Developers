@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+model_vgg16.h5
 # Distribution / packaging
 .Python
 build/

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Classifier</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-dark text-light">
+  <div class="container py-5">
+    <h1 class="mb-4 text-center">🖼️ Image Classifier</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-warning">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Upload Form -->
+    <form method="POST" enctype="multipart/form-data" class="mb-4">
+      <div class="input-group">
+        <input type="file" name="file" class="form-control" accept="image/*" required>
+        <button class="btn btn-primary">Upload & Classify</button>
+      </div>
+    </form>
+
+    <!-- Result Display -->
+    {% if label %}
+      <div class="card text-dark mx-auto" style="max-width: 400px;">
+        <img src="{{ url_for('uploaded_file', filename=filename) }}" class="card-img-top" alt="Uploaded Image">
+        <div class="card-body">
+          <h5 class="card-title">Prediction: <strong>{{ label }}</strong></h5>
+          <p class="card-text">Confidence: {{ confidence }}</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

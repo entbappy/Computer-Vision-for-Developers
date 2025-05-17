@@ -1,0 +1,5 @@
+# tensorflow==2.18.0
+tensorflow
+Flask 
+numpy
+pillow
